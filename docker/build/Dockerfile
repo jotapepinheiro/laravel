@@ -54,7 +54,7 @@ RUN composer install --no-interaction
 RUN apt-get install nginx -y
 RUN rm -rf /etc/nginx/sites-enabled/* && rm -rf /etc/nginx/sites-available/*
 COPY ${DOCKER_DIR}/nginx/sites.conf /etc/nginx/sites-enabled/default.conf
-COPY ${DOCKER_DIR}/nginx/error.html /var/www/html/error.html
+#COPY ${DOCKER_DIR}/nginx/error.html /var/www/html/error.html
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # RUN apt update -y && apt install nano git -y
