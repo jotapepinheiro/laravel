@@ -2,7 +2,7 @@ ARG PHP_VERSION
 FROM php:${PHP_VERSION}
 
 ## Diretório da aplicação
-ARG APP_DIR=/var/www/html
+ARG APP_DIR=/var/www/app
 
 ## Diretório dos arquivos de configuração
 ARG DOCKER_DIR=./docker/build
@@ -46,7 +46,7 @@ WORKDIR $APP_DIR
 RUN cd $APP_DIR
 RUN chown www-data:www-data $APP_DIR
 
-COPY --chown=www-data:www-data ./html .
+COPY --chown=www-data:www-data ./app .
 RUN rm -rf vendor
 RUN composer install --no-interaction
 
