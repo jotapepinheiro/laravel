@@ -37,18 +37,13 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 ### Supervisor
 COPY ${DOCKER_DIR}/supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-#COPY ${DOCKER_DIR}/supervisord/conf /etc/supervisord.d/
 
 COPY ${DOCKER_DIR}/php/extra-php.ini "$PHP_INI_DIR/99_extra.ini"
 COPY ${DOCKER_DIR}/php/extra-php-fpm.conf /etc/php8/php-fpm.d/www.conf
 
+RUN mkdir -p $APP_DIR
 WORKDIR $APP_DIR
-RUN cd $APP_DIR
 RUN chown www-data:www-data $APP_DIR
-
-COPY --chown=www-data:www-data ./app .
-RUN rm -rf vendor
-RUN composer install --no-interaction
 
 ### NGINX
 RUN apt-get install nginx -y
