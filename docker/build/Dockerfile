@@ -5,7 +5,7 @@ FROM php:${PHP_VERSION}
 ARG APP_DIR=/var/www/app
 
 ## Diretório dos arquivos de configuração
-ARG DOCKER_DIR=../docker/build
+ARG DOCKER_DIR=./
 
 ## Versão da Lib do Redis para PHP
 ARG REDIS_LIB_VERSION=5.3.7
