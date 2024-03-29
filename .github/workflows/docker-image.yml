@@ -25,7 +25,6 @@ jobs:
         build-args: |
           PHP_VERSION=8.3.4-fpm-bullseye
         push: true
-        multiPlatform: true
         tags: |
           ${{ secrets.DOCKER_USERNAME }}/laravel:latest
           ${{ secrets.DOCKER_USERNAME }}/laravel:php8.3.4
